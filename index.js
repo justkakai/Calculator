@@ -1,3 +1,6 @@
+let resultDisplay = document.querySelector('.result-display');
+
+let numbersContainer = document.querySelector('.numbers-box');
 let one = document.querySelector('.number-one');
 let two = document.querySelector('.number-two');
 let three = document.querySelector('.number-three');
@@ -15,7 +18,9 @@ let subtract = document.querySelector('.orange-minus');
 let add = document.querySelector('.orange-plus');
 let equals = document.querySelector('.orange-equal');
 
-let resultDisplay = document.querySelector('.result-display');
+let AC = document.querySelector('.operand-AC');
+let plusMinus = document.querySelector('.operand-plus-minus');
+let percentage = document.querySelector('.operand-percentage');
 
 let numsToAdd = [];
 
@@ -25,18 +30,23 @@ function addition(args) {
     return sum;
 };
 
-two.addEventListener('click', function() {
-    numsToAdd.push(parseInt(two.textContent));
-    console.log(numsToAdd);
-})
+let allNumbers = numbersContainer.children;
 
-three.addEventListener('click', function() {
-    numsToAdd.push(parseInt(three.textContent));
-    console.log(numsToAdd);
+[...allNumbers].forEach(number => {
+    number.addEventListener('click', function() {
+        numsToAdd.push(parseInt(number.textContent));
+        resultDisplay.textContent = number.textContent;
+    })
 })
 
 equals.addEventListener('click', function() {
     resultDisplay.textContent = addition(numsToAdd);
 })
+
+AC.addEventListener('click', function() {
+    numsToAdd.splice(0, numsToAdd.length);
+    resultDisplay.textContent = 0;
+})
+
 
 
