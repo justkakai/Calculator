@@ -64,7 +64,7 @@ function subtraction(args) {
 });*/
 
 equals.addEventListener('click', function() {
-    let sum = numsArray.reduce((accumulated, currValue, currIndex, array) => {
+    let calculation = numsArray.reduce((accumulated, currValue, currIndex, array) => {
         if (currIndex === 0) {
             return currValue;
         } else {
@@ -72,10 +72,14 @@ equals.addEventListener('click', function() {
                 return accumulated + currValue;
             } else if (operandArray[currIndex -1] === '-') {
                 return accumulated - currValue;
+            } else if (operandArray[currIndex -1] === '×') {
+                return accumulated * currValue;
+            } else if (operandArray[currIndex -1] === '÷') {
+                return accumulated / currValue;
             }
         }
-    }, 0)
-    resultDisplay.textContent = resultDisplay.textContent + sum;
+    });
+    resultDisplay.textContent = resultDisplay.textContent + calculation;
 });
 
 
