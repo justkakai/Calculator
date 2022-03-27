@@ -4,6 +4,7 @@ displayResult.textContent = '';
 
 let numsArray = [];
 let operandArray = [];
+let displayArray = [];
 
 /*function addition(args) {
     let sum = 0;
@@ -16,10 +17,6 @@ function addition(...args) {
     [...args].forEach(item => sum += item)
     return sum;
 };
-
-function subtraction(args) {
-    let difference = [...args][0];
-}
 
 [...allNumbers].forEach(number => {
     number.addEventListener('click', function() {
@@ -39,25 +36,17 @@ function subtraction(args) {
     })
 });
 
-/*equals.addEventListener('click', function() {
-    let totalSum = 0;
-    //resultDisplay.textContent = addition(numsArray);
-    for (let i = 0; i < operandArray.length; i++) {
-        if (operandArray[i] === '+') {
-            let sum = addition(numsArray[i], numsArray[i+1]);
-            if (typeof storedResult[0] === undefined) {
-                storedResult.push(sum);
-            } else {
-                storedResult.splice(0, 1, ) storedResult[0] + sum;
-            }
-            
-            console.log(storedResult);
-            resultDisplay.textContent = resultDisplay.textContent + sum;
-        } else if (operandArray[i] !== '+') {
-            resultDisplay.textContent = resultDisplay.textContent;
-        } // giving incorrect values bc prev result needs to be stored!
-    }
-});*/
+percentage.addEventListener('click', function() {
+    operandArray.push(percentage.textContent); 
+    displayResult.textContent = displayResult.textContent + percentage.textContent;
+})
+
+plusMinus.addEventListener('click', function() {
+    numsArray[numsArray.length -1] = numsArray[numsArray.length -1] * -1;
+    //operandArray.push(plusMinus.textContent); 
+    displayResult.textContent = displayResult.textContent;
+    console.log(displayResult.textContent);
+})
 
 equals.addEventListener('click', function() {
     let calculation = numsArray.reduce((accumulated, currValue, currIndex) => {
@@ -72,6 +61,8 @@ equals.addEventListener('click', function() {
                 return accumulated * currValue;
             } else if (operandArray[currIndex -1] === '÷') {
                 return accumulated / currValue;
+            } else if (operandArray[currIndex -1] === '%') {
+                return accumulated * currValue / 100;
             }
         }
     });
