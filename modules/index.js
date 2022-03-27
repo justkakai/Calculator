@@ -1,8 +1,9 @@
 /*
 THINGS I STILL NEED TO INCORPORATE:
 1. BODMAS
-2. using 2- or more digit numbers
+2. using 2- or more digit numbers (fixed)
 3. making multiple calculations one after the other
+4. starting calcs with negative numbers not working 
 */
 
 import { resultDisplay, displayInputs, displayResult, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange } from './variables.js';
@@ -36,7 +37,7 @@ function addition(...args) {
 [...allNumbers].forEach(number => {
     let moreThanOneDigit = '';
     number.addEventListener('click', function() {
-        if (isNaN(Number(displayArray[displayArray.length -1])) === true) {
+        if (isNaN(Number(displayArray[displayArray.length -1]))) {
             displayArray.push(number.textContent);
         } else {
             moreThanOneDigit = displayArray[displayArray.length -1] + number.textContent;
@@ -72,6 +73,12 @@ plusMinus.addEventListener('click', function() {
 })
 
 equals.addEventListener('click', function() {
+    if (displayArray[0] === '-') {
+        let firstNegatedDigit = displayArray[0] + displayArray[1];
+        operandArray.splice(0, 1);
+        displayArray.splice(0, 2, firstNegatedDigit);
+        console.log(displayArray);
+    }
     displayArray.forEach(item => {
         if (isNaN(Number(item)) === false) {
             numsArray.push(parseInt(item));
