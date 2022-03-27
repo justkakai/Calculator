@@ -74,6 +74,21 @@ body {
 
 .result-display {
     color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.display-inputs {
+    height: 30%;
+    font-size: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 20px;
+}
+
+.display-result {
+    height: 70%;
     font-size: 90px;
     display: flex;
     justify-content: flex-end;

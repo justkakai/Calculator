@@ -83,7 +83,7 @@ equals.addEventListener('click', function() {
         }
     });
     displayInputs.textContent = displayArray.join('');
-    displayResult.textContent = calculation;
+    displayResult.textContent = calculation.toFixed(6);
     displayArray.splice(0, displayArray.length);
     numsArray.splice(0, numsArray.length);
     operandArray.splice(0, operandArray.length);
