@@ -1,14 +1,9 @@
-import { resultDisplay, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange } from './variables.js';
+import { resultDisplay, displayInputs, displayResult, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange } from './variables.js';
 
-resultDisplay.textContent = '';
+displayResult.textContent = '';
 
 let numsArray = [];
 let operandArray = [];
-let additionArray = [];
-let subtractionArray = [];
-let multiplicationArray = [];
-let divisionArray = [];
-let storedResult = [];
 
 /*function addition(args) {
     let sum = 0;
@@ -29,16 +24,17 @@ function subtraction(args) {
 [...allNumbers].forEach(number => {
     number.addEventListener('click', function() {
         numsArray.push(parseInt(number.textContent));
-        resultDisplay.textContent = resultDisplay.textContent + number.textContent;
+        displayResult.textContent = displayResult.textContent + number.textContent;
         console.log(numsArray);
     })
 });
 
 [...allOrange].forEach(operand => {
     operand.addEventListener('click', function() {
-        //numsArray.push(parseInt(operand.textContent));
-        operandArray.push(operand.textContent);
-        resultDisplay.textContent = resultDisplay.textContent + operand.textContent;
+        if (operand.textContent !== '=') {
+           operandArray.push(operand.textContent); 
+           displayResult.textContent = displayResult.textContent + operand.textContent;
+        }
         console.log(operandArray);
     })
 });
@@ -64,7 +60,7 @@ function subtraction(args) {
 });*/
 
 equals.addEventListener('click', function() {
-    let calculation = numsArray.reduce((accumulated, currValue, currIndex, array) => {
+    let calculation = numsArray.reduce((accumulated, currValue, currIndex) => {
         if (currIndex === 0) {
             return currValue;
         } else {
@@ -79,14 +75,15 @@ equals.addEventListener('click', function() {
             }
         }
     });
-    resultDisplay.textContent = resultDisplay.textContent + calculation;
+    displayInputs.textContent = displayResult.textContent;
+    displayResult.textContent = calculation;
 });
-
 
 AC.addEventListener('click', function() {
     numsArray.splice(0, numsArray.length);
     operandArray.splice(0, operandArray.length);
-    resultDisplay.textContent = '';
+    displayInputs.textContent = '';
+    displayResult.textContent = '';
 });
 
 

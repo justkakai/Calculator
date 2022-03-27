@@ -1,4 +1,6 @@
 let resultDisplay = document.querySelector('.result-display');
+let displayInputs = document.querySelector('.display-inputs');
+let displayResult = document.querySelector('.display-result');
 
 let numbersContainer = document.querySelector('.numbers-box');
 let one = document.querySelector('.number-one');
@@ -26,4 +28,4 @@ let percentage = document.querySelector('.operand-percentage');
 let allNumbers = numbersContainer.children;
 let allOrange = orangeOperands.children;
 
-export { resultDisplay, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange };
+export { resultDisplay, displayInputs, displayResult, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange };
