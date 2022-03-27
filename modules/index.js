@@ -3,7 +3,7 @@ THINGS I STILL NEED TO INCORPORATE:
 1. BODMAS
 2. using 2- or more digit numbers (fixed)
 3. making multiple calculations one after the other
-4. starting calcs with negative numbers not working 
+4. starting calcs with negative numbers not working (fixed)
 */
 
 import { resultDisplay, displayInputs, displayResult, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange } from './variables.js';
@@ -11,28 +11,6 @@ import { resultDisplay, displayInputs, displayResult, numbersContainer, one, two
 let numsArray = [];
 let operandArray = [];
 let displayArray = [];
-
-/*function addition(args) {
-    let sum = 0;
-    [...args].forEach(item => sum += item)
-    return sum;
-};*/
-
-function addition(...args) {
-    let sum = 0;
-    [...args].forEach(item => sum += item)
-    return sum;
-};
-
-/*[...allNumbers].forEach(number => {
-    number.addEventListener('click', function() {
-        numsArray.push(parseInt(number.textContent));
-        displayArray.push(number.textContent);
-        displayResult.textContent = displayArray.join('');
-        console.log(numsArray);
-        console.log(displayArray);
-    })
-});*/
 
 [...allNumbers].forEach(number => {
     let moreThanOneDigit = '';
@@ -78,6 +56,8 @@ equals.addEventListener('click', function() {
         operandArray.splice(0, 1);
         displayArray.splice(0, 2, firstNegatedDigit);
         console.log(displayArray);
+        console.log(operandArray);
+        console.log(numsArray);
     }
     displayArray.forEach(item => {
         if (isNaN(Number(item)) === false) {
@@ -105,6 +85,8 @@ equals.addEventListener('click', function() {
     displayInputs.textContent = displayArray.join('');
     displayResult.textContent = calculation;
     displayArray.splice(0, displayArray.length);
+    numsArray.splice(0, numsArray.length);
+    operandArray.splice(0, operandArray.length);
 });
 
 AC.addEventListener('click', function() {
