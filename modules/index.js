@@ -1,6 +1,6 @@
 import { resultDisplay, displayInputs, displayResult, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange } from './variables.js';
 
-displayResult.textContent = '';
+//displayResult.textContent = '';
 
 let numsArray = [];
 let operandArray = [];
@@ -21,7 +21,8 @@ function addition(...args) {
 [...allNumbers].forEach(number => {
     number.addEventListener('click', function() {
         numsArray.push(parseInt(number.textContent));
-        displayResult.textContent = displayResult.textContent + number.textContent;
+        displayArray.push(number.textContent);
+        displayResult.textContent = displayArray.join('');
         console.log(numsArray);
     })
 });
@@ -29,8 +30,9 @@ function addition(...args) {
 [...allOrange].forEach(operand => {
     operand.addEventListener('click', function() {
         if (operand.textContent !== '=') {
-           operandArray.push(operand.textContent); 
-           displayResult.textContent = displayResult.textContent + operand.textContent;
+            operandArray.push(operand.textContent); 
+            displayArray.push(operand.textContent);
+            displayResult.textContent = displayArray.join('');
         }
         console.log(operandArray);
     })
@@ -38,13 +40,14 @@ function addition(...args) {
 
 percentage.addEventListener('click', function() {
     operandArray.push(percentage.textContent); 
-    displayResult.textContent = displayResult.textContent + percentage.textContent;
+    displayArray.push(percentage.textContent);
+    displayResult.textContent = displayArray.join('');
 })
 
 plusMinus.addEventListener('click', function() {
     numsArray[numsArray.length -1] = numsArray[numsArray.length -1] * -1;
-    //operandArray.push(plusMinus.textContent); 
-    displayResult.textContent = displayResult.textContent;
+    displayArray[displayArray.length -1] = displayArray[displayArray.length -1] * -1;
+    displayResult.textContent = displayArray.join('');
     console.log(displayResult.textContent);
 })
 
@@ -66,13 +69,15 @@ equals.addEventListener('click', function() {
             }
         }
     });
-    displayInputs.textContent = displayResult.textContent;
+    displayInputs.textContent = displayArray.join('');
     displayResult.textContent = calculation;
+    displayArray.splice(0, displayArray.length);
 });
 
 AC.addEventListener('click', function() {
     numsArray.splice(0, numsArray.length);
     operandArray.splice(0, operandArray.length);
+    displayArray.splice(0, displayArray.length);
     displayInputs.textContent = '';
     displayResult.textContent = '';
 });
