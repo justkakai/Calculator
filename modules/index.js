@@ -1,6 +1,11 @@
-import { resultDisplay, displayInputs, displayResult, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange } from './variables.js';
+/*
+THINGS I STILL NEED TO INCORPORATE:
+1. BODMAS
+2. using 2- or more digit numbers
+3. making multiple calculations one after the other
+*/
 
-//displayResult.textContent = '';
+import { resultDisplay, displayInputs, displayResult, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange } from './variables.js';
 
 let numsArray = [];
 let operandArray = [];
@@ -18,12 +23,27 @@ function addition(...args) {
     return sum;
 };
 
-[...allNumbers].forEach(number => {
+/*[...allNumbers].forEach(number => {
     number.addEventListener('click', function() {
         numsArray.push(parseInt(number.textContent));
         displayArray.push(number.textContent);
         displayResult.textContent = displayArray.join('');
         console.log(numsArray);
+        console.log(displayArray);
+    })
+});*/
+
+[...allNumbers].forEach(number => {
+    let moreThanOneDigit = '';
+    number.addEventListener('click', function() {
+        if (isNaN(Number(displayArray[displayArray.length -1])) === true) {
+            displayArray.push(number.textContent);
+        } else {
+            moreThanOneDigit = displayArray[displayArray.length -1] + number.textContent;
+            displayArray.splice(displayArray.length -1, 1, moreThanOneDigit);
+        }
+        displayResult.textContent = displayArray.join('');
+        console.log(displayArray);
     })
 });
 
@@ -52,6 +72,12 @@ plusMinus.addEventListener('click', function() {
 })
 
 equals.addEventListener('click', function() {
+    displayArray.forEach(item => {
+        if (isNaN(Number(item)) === false) {
+            numsArray.push(parseInt(item));
+        };
+    });
+    console.log(numsArray);
     let calculation = numsArray.reduce((accumulated, currValue, currIndex) => {
         if (currIndex === 0) {
             return currValue;
@@ -78,8 +104,8 @@ AC.addEventListener('click', function() {
     numsArray.splice(0, numsArray.length);
     operandArray.splice(0, operandArray.length);
     displayArray.splice(0, displayArray.length);
-    displayInputs.textContent = '';
-    displayResult.textContent = '';
+    displayInputs.textContent = null;
+    displayResult.textContent = null;
 });
 
 
