@@ -5,6 +5,7 @@ THINGS I STILL NEED TO INCORPORATE:
 3. making multiple calculations one after the other
 4. starting calcs with negative numbers not working (fixed)
 5. add float functionality
+6. add 'delete input' functionality
 */
 
 import { resultDisplay, displayInputs, displayResult, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange } from './variables.js';
