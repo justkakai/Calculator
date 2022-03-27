@@ -4,6 +4,7 @@ THINGS I STILL NEED TO INCORPORATE:
 2. using 2- or more digit numbers (fixed)
 3. making multiple calculations one after the other
 4. starting calcs with negative numbers not working (fixed)
+5. add float functionality
 */
 
 import { resultDisplay, displayInputs, displayResult, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange } from './variables.js';
@@ -83,7 +84,8 @@ equals.addEventListener('click', function() {
         }
     });
     displayInputs.textContent = displayArray.join('');
-    displayResult.textContent = calculation.toFixed(6);
+    displayResult.textContent = calculation;
+    //displayResult.textContent = calculation.toFixed(6);
     displayArray.splice(0, displayArray.length);
     numsArray.splice(0, numsArray.length);
     operandArray.splice(0, operandArray.length);
