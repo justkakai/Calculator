@@ -8,7 +8,7 @@ THINGS I STILL NEED TO INCORPORATE:
 6. add 'delete input' functionality
 */
 
-import { resultDisplay, displayInputs, displayResult, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange } from './variables.js';
+import { resultDisplay, displayInputs, displayResult, calcContainer, hiddenElements, box1, box2, box3, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange, calcChildren } from './variables.js';
 
 let numsArray = [];
 let operandArray = [];
@@ -85,8 +85,17 @@ equals.addEventListener('click', function() {
         }
     });
     displayInputs.textContent = displayArray.join('');
-    displayResult.textContent = calculation;
-    //displayResult.textContent = calculation.toFixed(6);
+    let calcToString = calculation.toString();
+    if (calcToString.includes('.')) {
+        let calcDecimalPlaces = calcToString.split('.')[1].length;
+        if (calcDecimalPlaces > 6) {
+            displayResult.textContent = calculation.toFixed(6);
+        } else {
+            displayResult.textContent = calculation;
+        }
+    } else {
+        displayResult.textContent = calculation;
+    }
     displayArray.splice(0, displayArray.length);
     numsArray.splice(0, numsArray.length);
     operandArray.splice(0, operandArray.length);
@@ -100,5 +109,25 @@ AC.addEventListener('click', function() {
     displayResult.textContent = null;
 });
 
+/*box2.addEventListener('click', function() {
+    [...calcChildren].forEach(item => {
+        if (!item.classList.contains('display')) {
+            item.style.display = 'none';
+            calcContainer.style.backgroundColor = 'inherit';
+            calcContainer.style.backgroundImage = 'url(../images/overlay.png)';
+            calcContainer.style.boxShadow = 'none';
+        }
+    });
+});
 
+box2.addEventListener('click', function() {
+    [...calcChildren].forEach(item => {
+        if (!item.classList.contains('display')) {
+            item.style.display = 'grid';
+            calcContainer.style.backgroundColor = 'var(--calc-container-bg)';
+            calcContainer.style.backgroundImage = 'none';
+            calcContainer.style.boxShadow = 'rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px';
+        }
+    });
+});*/
 

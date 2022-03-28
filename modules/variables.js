@@ -2,6 +2,14 @@ let resultDisplay = document.querySelector('.result-display');
 let displayInputs = document.querySelector('.display-inputs');
 let displayResult = document.querySelector('.display-result');
 
+let calcContainer = document.querySelector('.calculator-container');
+
+let hiddenElements = document.querySelectorAll('.result-display, .operands, .numbers-box, .orange-operands');
+
+let box1 = document.querySelector('.box-1');
+let box2 = document.querySelector('.box-2');
+let box3 = document.querySelector('.box-3');
+
 let numbersContainer = document.querySelector('.numbers-box');
 let one = document.querySelector('.number-one');
 let two = document.querySelector('.number-two');
@@ -27,7 +35,8 @@ let percentage = document.querySelector('.operand-percentage');
 
 let allNumbers = numbersContainer.children;
 let allOrange = orangeOperands.children;
+let calcChildren = calcContainer.children;
 
-export { resultDisplay, displayInputs, displayResult, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange };
+export { resultDisplay, displayInputs, displayResult, calcContainer, hiddenElements, box1, box2, box3, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange, calcChildren };
 
 
