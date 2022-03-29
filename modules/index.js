@@ -2,21 +2,21 @@
 THINGS I STILL NEED TO INCORPORATE:
 1. BODMAS
 2. using 2- or more digit numbers (fixed)
-3. making multiple calculations one after the other
+3. making multiple calculations one after the other 
 4. starting calcs with negative numbers not working (fixed)
 5. add float functionality (fixed)
 6. add 'delete input' functionality
 7. remove unnecessary zeros after dot (fixed)
 */
 
-import { resultDisplay, displayInputs, displayResult, calcContainer, hiddenElements, box1, box2, box3, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, dot, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange, calcChildren } from './variables.js';
+import { resultDisplay, displayInputs, displayResult, calcContainer, hiddenElements, box1, box2, box3, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, dot, del, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange, calcChildren } from './variables.js';
 
 let numsArray = [];
 let operandArray = [];
 let displayArray = [];
 let resultArray = [];
 
-[...allNumbers].forEach(number => {
+allNumbers.forEach(number => {
     let moreThanOneDigit = '';
     number.addEventListener('click', function() {
         if (isNaN(Number(displayArray[displayArray.length -1]))) {
@@ -40,7 +40,7 @@ let resultArray = [];
         if (isNaN(Number(displayArray[0]))) {
             displayArray.unshift(resultArray[resultArray.length -1]);
         };
-        console.log(operandArray);
+        //console.log(operandArray);
     })
 });
 
@@ -55,6 +55,16 @@ plusMinus.addEventListener('click', function() {
     displayArray[displayArray.length -1] = displayArray[displayArray.length -1] * -1;
     displayResult.textContent = displayArray.join('');
     console.log(displayResult.textContent);
+});
+
+del.addEventListener('click', function() {
+    let withDeleted = displayArray[displayArray.length -1].slice(0, -1);
+    displayArray.splice(displayArray.length -1, 1, withDeleted);
+    if (displayArray[displayArray.length -1].length === 0) {
+        displayArray.splice(displayArray.length -1, 1);
+    }
+    displayResult.textContent = displayArray.join('');
+    console.log(displayArray);
 });
 
 equals.addEventListener('click', function() {
