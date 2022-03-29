@@ -4,7 +4,7 @@ THINGS I STILL NEED TO INCORPORATE:
 2. using 2- or more digit numbers (fixed)
 3. making multiple calculations one after the other
 4. starting calcs with negative numbers not working (fixed)
-5. add float functionality
+5. add float functionality (fixed)
 6. add 'delete input' functionality
 */
 
@@ -13,6 +13,7 @@ import { resultDisplay, displayInputs, displayResult, calcContainer, hiddenEleme
 let numsArray = [];
 let operandArray = [];
 let displayArray = [];
+let resultArray = [];
 
 [...allNumbers].forEach(number => {
     let moreThanOneDigit = '';
@@ -35,6 +36,9 @@ let displayArray = [];
             displayArray.push(operand.textContent);
             displayResult.textContent = displayArray.join('');
         }
+        if (isNaN(Number(displayArray[0]))) {
+            displayArray.unshift(resultArray[resultArray.length -1]);
+        };
         console.log(operandArray);
     })
 });
@@ -52,12 +56,8 @@ plusMinus.addEventListener('click', function() {
     console.log(displayResult.textContent);
 });
 
-dot.addEventListener('click', function() {
-    //displayArray.push(dot.textContent);
-
-});
-
 equals.addEventListener('click', function() {
+    console.log(round);
     if (displayArray[0] === '-') {
         let firstNegatedDigit = displayArray[0] + displayArray[1];
         operandArray.splice(0, 1);
@@ -101,7 +101,9 @@ equals.addEventListener('click', function() {
     } else {
         displayResult.textContent = calculation;
     }
-    displayArray.splice(0, displayArray.length);
+    resultArray.push(parseFloat(displayResult.textContent));
+    console.log(resultArray);
+    displayArray.splice(0, displayArray.length, resultArray[resultArray.length -1]);
     numsArray.splice(0, numsArray.length);
     operandArray.splice(0, operandArray.length);
 });
@@ -110,6 +112,8 @@ AC.addEventListener('click', function() {
     numsArray.splice(0, numsArray.length);
     operandArray.splice(0, operandArray.length);
     displayArray.splice(0, displayArray.length);
+    resultArray.splice(0, resultArray.length);
+    round = 1;
     displayInputs.textContent = null;
     displayResult.textContent = null;
 });
