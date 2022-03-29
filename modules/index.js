@@ -6,6 +6,7 @@ THINGS I STILL NEED TO INCORPORATE:
 4. starting calcs with negative numbers not working (fixed)
 5. add float functionality (fixed)
 6. add 'delete input' functionality
+7. remove unnecessary zeros after dot (fixed)
 */
 
 import { resultDisplay, displayInputs, displayResult, calcContainer, hiddenElements, box1, box2, box3, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, dot, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange, calcChildren } from './variables.js';
@@ -93,12 +94,12 @@ equals.addEventListener('click', function() {
     if (calcToString.includes('.')) {
         let calcDecimalPlaces = calcToString.split('.')[1].length;
         if (calcDecimalPlaces > 7) {
-            displayResult.textContent = calculation.toFixed(7);
+            displayResult.textContent = parseFloat(calculation.toFixed(7));
         } else {
-            displayResult.textContent = calculation;
+            displayResult.textContent = parseFloat(calculation);
         }
     } else {
-        displayResult.textContent = calculation;
+        displayResult.textContent = parseFloat(calculation);
     }
     resultArray.push(parseFloat(displayResult.textContent));
     console.log(resultArray);
