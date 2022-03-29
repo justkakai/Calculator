@@ -57,7 +57,6 @@ plusMinus.addEventListener('click', function() {
 });
 
 equals.addEventListener('click', function() {
-    console.log(round);
     if (displayArray[0] === '-') {
         let firstNegatedDigit = displayArray[0] + displayArray[1];
         operandArray.splice(0, 1);
@@ -113,7 +112,6 @@ AC.addEventListener('click', function() {
     operandArray.splice(0, operandArray.length);
     displayArray.splice(0, displayArray.length);
     resultArray.splice(0, resultArray.length);
-    round = 1;
     displayInputs.textContent = null;
     displayResult.textContent = null;
 });
