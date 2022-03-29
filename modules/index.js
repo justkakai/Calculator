@@ -5,7 +5,7 @@ THINGS I STILL NEED TO INCORPORATE:
 3. making multiple calculations one after the other 
 4. starting calcs with negative numbers not working (fixed)
 5. add float functionality (fixed)
-6. add 'delete input' functionality
+6. add 'delete input' functionality (fixed)
 7. remove unnecessary zeros after dot (fixed)
 */
 
@@ -40,7 +40,6 @@ allNumbers.forEach(number => {
         if (isNaN(Number(displayArray[0]))) {
             displayArray.unshift(resultArray[resultArray.length -1]);
         };
-        //console.log(operandArray);
     })
 });
 
@@ -81,6 +80,7 @@ equals.addEventListener('click', function() {
             numsArray.push(parseFloat(item));
         };
     });
+    console.log(displayArray);
     console.log(numsArray);
     let calculation = numsArray.reduce((accumulated, currValue, currIndex) => {
         if (currIndex === 0) {
@@ -99,6 +99,13 @@ equals.addEventListener('click', function() {
             }
         }
     });
+    for (let i = displayArray.length -1; i >= 0; i--) {
+        if (isNaN(Number(displayArray[displayArray.length -1]))) {
+            displayArray.splice(displayArray.length -1, 1);
+        } else {
+            break;
+        }
+    };
     displayInputs.textContent = displayArray.join('');
     let calcToString = calculation.toString();
     if (calcToString.includes('.')) {
