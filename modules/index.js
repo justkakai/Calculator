@@ -8,7 +8,7 @@ THINGS I STILL NEED TO INCORPORATE:
 6. add 'delete input' functionality
 */
 
-import { resultDisplay, displayInputs, displayResult, calcContainer, hiddenElements, box1, box2, box3, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange, calcChildren } from './variables.js';
+import { resultDisplay, displayInputs, displayResult, calcContainer, hiddenElements, box1, box2, box3, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, dot, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange, calcChildren } from './variables.js';
 
 let numsArray = [];
 let operandArray = [];
@@ -43,14 +43,19 @@ percentage.addEventListener('click', function() {
     operandArray.push(percentage.textContent); 
     displayArray.push(percentage.textContent);
     displayResult.textContent = displayArray.join('');
-})
+});
 
 plusMinus.addEventListener('click', function() {
     numsArray[numsArray.length -1] = numsArray[numsArray.length -1] * -1;
     displayArray[displayArray.length -1] = displayArray[displayArray.length -1] * -1;
     displayResult.textContent = displayArray.join('');
     console.log(displayResult.textContent);
-})
+});
+
+dot.addEventListener('click', function() {
+    //displayArray.push(dot.textContent);
+
+});
 
 equals.addEventListener('click', function() {
     if (displayArray[0] === '-') {
@@ -63,7 +68,7 @@ equals.addEventListener('click', function() {
     }
     displayArray.forEach(item => {
         if (isNaN(Number(item)) === false) {
-            numsArray.push(parseInt(item));
+            numsArray.push(parseFloat(item));
         };
     });
     console.log(numsArray);
@@ -88,8 +93,8 @@ equals.addEventListener('click', function() {
     let calcToString = calculation.toString();
     if (calcToString.includes('.')) {
         let calcDecimalPlaces = calcToString.split('.')[1].length;
-        if (calcDecimalPlaces > 6) {
-            displayResult.textContent = calculation.toFixed(6);
+        if (calcDecimalPlaces > 7) {
+            displayResult.textContent = calculation.toFixed(7);
         } else {
             displayResult.textContent = calculation;
         }

@@ -2,21 +2,25 @@
     --main-background-color: #78586F;
     --primary-font-color: white;
     --result-display-color: white;
-    --display-bg: black;
+    --display-bg: rgb(34, 34, 34);
     --display-section-bg: #2b2d2f;
     --box-1: #ff5a52;
     --box-2: #e6c029;
     --box-3: #52c22b;
+    --grid-gap: 2px;
     --calc-container-bg: #2c2e30;
     --calc-top: #3f4143;
     --calc-top-bg: #474849;
     --calc-top-hover-bg: #4a4c4e;
     --calc-side: #f3a812de;
+    /* --calc-side: #be2b4b70; */
     --calc-side-bg: #807455;
+    /* --calc-side-bg: #aa135270; */
     --calc-side-hover-bg: #cc7f0c;
     --calc-numbers: #5f6062;
     --calc-numbers-bg: #484949;
     --calc-numbers-hover-bg: #7e7e7e;
+    --calc-container-box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
 * {
@@ -33,11 +37,12 @@ body {
 }
 
 .main-container {
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
-    width: 100%;
+    background-image: url(./images/overlay.png);
     background-color: var(--main-background-color);
 }
 
@@ -45,7 +50,7 @@ body {
     height: 42rem;
     width: 30rem;
     background-color: var(--calc-container-bg);
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+    box-shadow: var(--calc-container-box-shadow);
     display: grid;
     grid-template-rows: repeat(7, 1fr);
     grid-template-columns: repeat(4, 1fr);
@@ -56,11 +61,12 @@ body {
     background-color: var(--display-bg);
     display: grid;
     grid-template-rows: 1fr 3fr;
-    gap: 2px;
+    gap: var(--grid-gap);
 }
 
 .display-section {
     background-color: var(--display-section-bg);
+    background-image: url(./images/overlay.png);
     overflow: hidden;
 }
 
@@ -74,6 +80,10 @@ body {
     height: 25px;
     width: 25px;
     border-radius: 50%;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300; */
 }
 
 .box-1 {
@@ -114,7 +124,9 @@ body {
 
 .number, .orange, .operand {
     font-size: 40px;
+    /* font-weight: 300; */
     color: var(--primary-font-color);
+    /* border-radius: 2px; */
     /* animation: bg-color; */
 }
 
@@ -124,7 +136,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
-    gap: 2px;
+    gap: var(--grid-gap);
 }
 
 .operand {
@@ -147,7 +159,7 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    gap: 2px;
+    gap: var(--grid-gap);
 }
 
 .number {
@@ -214,7 +226,7 @@ body {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(5, 1fr);
-    gap: 2px;
+    gap: var(--grid-gap);
 }
 
 .orange {
