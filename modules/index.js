@@ -43,13 +43,8 @@ allNumbers.forEach(number => {
             displayArray.splice(0, displayArray.length, '');
             operandArray.shift();
         };
-        /*for (let i = 0; i < displayArray.length; i++) {
-            if (displayArray[i] !== '-' && isNaN(Number(displayArray[i]))) {
-                displayArray.splice(i, displayArray.length);
-                operandArray.shift();
-            };
-        };*/
         console.log(operandArray);
+        console.log(displayArray);
     })
 });
 
@@ -85,11 +80,19 @@ equals.addEventListener('click', function() {
         console.log(operandArray);
         console.log(numsArray);
     }
-    displayArray.forEach(item => {
+    displayArray.forEach((item, index, array) => {
+        if (item === '-' && isNaN(Number(array[index -1]))) {
+            array[index +1] = item + array[index +1];
+        };
         if (isNaN(Number(item)) === false) {
             numsArray.push(parseFloat(item));
         };
     });
+    displayArray.forEach((item, index, array) => {
+        if (item === '-') {
+            array.splice(index, 1);
+        };
+    }); // find a better way of rewriting this to avoid repetition!!!
     console.log(displayArray);
     console.log(numsArray);
     let calculation = numsArray.reduce((accumulated, currValue, currIndex) => {

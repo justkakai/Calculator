@@ -81,10 +81,6 @@ body {
     height: 25px;
     width: 25px;
     border-radius: 50%;
-    /* display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 300; */
 }
 
 .box-1 {
@@ -127,10 +123,7 @@ body {
     font-family: var(--main-font-family);
     font-weight: 400;
     font-size: 40px;
-    /* font-weight: 300; */
     color: var(--primary-font-color);
-    /* border-radius: 2px; */
-    /* animation: bg-color; */
 }
 
 .operands {
@@ -237,7 +230,6 @@ body {
 }
 
 .orange {
-    /* color: rgb(56, 52, 52); */
     display: flex;
     justify-content: center;
     align-items: center;
