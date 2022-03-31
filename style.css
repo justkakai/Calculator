@@ -1,4 +1,5 @@
 :root {
+    --main-font-family: 'Krub', sans-serif;
     --main-background-color: #78586F;
     --primary-font-color: white;
     --result-display-color: white;
@@ -12,7 +13,7 @@
     --calc-top: #3f4143;
     --calc-top-bg: #474849;
     --calc-top-hover-bg: #4a4c4e;
-    --calc-side: #f3a812de;
+    --calc-side: #ffaa00de;
     /* --calc-side: #be2b4b70; */
     --calc-side-bg: #807455;
     /* --calc-side-bg: #aa135270; */
@@ -30,8 +31,6 @@
 }
 
 body {
-    font-family: 'Krub', sans-serif;
-    font-weight: 300;
     height: 100vh;
     width: 100vw;
 }
@@ -57,6 +56,8 @@ body {
 }
 
 .display {
+    font-family: var(--main-font-family);
+    font-weight: 300;
     grid-area: 1/1/3/5;
     background-color: var(--display-bg);
     display: grid;
@@ -123,6 +124,8 @@ body {
 }
 
 .number, .orange, .operand {
+    font-family: var(--main-font-family);
+    font-weight: 400;
     font-size: 40px;
     /* font-weight: 300; */
     color: var(--primary-font-color);
@@ -234,6 +237,7 @@ body {
 }
 
 .orange {
+    /* color: rgb(56, 52, 52); */
     display: flex;
     justify-content: center;
     align-items: center;

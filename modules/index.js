@@ -7,6 +7,8 @@ THINGS I STILL NEED TO INCORPORATE:
 5. add float functionality (fixed)
 6. add 'delete input' functionality (fixed)
 7. remove unnecessary zeros after dot (fixed)
+8. starting with '%' doesn't work as expected
+9. starting with multiple non-integers doesn't work as expected
 */
 
 import { resultDisplay, displayInputs, displayResult, calcContainer, hiddenElements, box1, box2, box3, numbersContainer, one, two, three, four, five, six, seven, eight, nine, zero, dot, del, orangeOperands, divide, multiply, subtract, add, equals, AC, plusMinus, percentage, allNumbers, allOrange, calcChildren } from './variables.js';
@@ -37,13 +39,21 @@ allNumbers.forEach(number => {
             displayArray.push(operand.textContent);
             displayResult.textContent = displayArray.join('');
         }
-        if (isNaN(Number(displayArray[0]))) {
-            displayArray.unshift(resultArray[resultArray.length -1]);
+        if (displayArray[0] !== '-' && isNaN(Number(displayArray[0]))) {
+            displayArray.splice(0, displayArray.length, '');
+            operandArray.shift();
         };
+        /*for (let i = 0; i < displayArray.length; i++) {
+            if (displayArray[i] !== '-' && isNaN(Number(displayArray[i]))) {
+                displayArray.splice(i, displayArray.length);
+                operandArray.shift();
+            };
+        };*/
+        console.log(operandArray);
     })
 });
 
-percentage.addEventListener('click', function() {
+percentage.addEventListener('click', function() { 
     operandArray.push(percentage.textContent); 
     displayArray.push(percentage.textContent);
     displayResult.textContent = displayArray.join('');
@@ -102,9 +112,7 @@ equals.addEventListener('click', function() {
     for (let i = displayArray.length -1; i >= 0; i--) {
         if (isNaN(Number(displayArray[displayArray.length -1]))) {
             displayArray.splice(displayArray.length -1, 1);
-        } else {
-            break;
-        }
+        };
     };
     displayInputs.textContent = displayArray.join('');
     let calcToString = calculation.toString();
