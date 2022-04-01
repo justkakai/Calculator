@@ -89,7 +89,7 @@ equals.addEventListener('click', function() {
         };
     });
     displayArray.forEach((item, index, array) => {
-        if (item === '-') {
+        if (item === '-' && array[index +1] < 0) {
             array.splice(index, 1);
         };
     }); // find a better way of rewriting this to avoid repetition!!!
